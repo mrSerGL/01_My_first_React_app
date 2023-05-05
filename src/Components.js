@@ -11,6 +11,11 @@ import ColorPicker from './components/eventsStats/ColorPicker/';
 import Input from 'components/Forms/Input';
 import Form from 'components/Forms/Form';
 import ToDo from './components/TodoList';
+import Clock from './components/lifeCycle/Clock';
+import Tabs from 'components/lifeCycle/Tabs';
+import tabs from './components/lifeCycle/Tabs/tabs.json';
+
+
 
 // - ================== class area ==============================
 
@@ -33,13 +38,27 @@ class Components extends Component {
     // );
 
     return (
-      <>
+      <div className='container'>
         <RouteApp />
 
-        <h2>To Do</h2>
+        <h3>Tabs - работа с активным элементом в коллекции + shouldComponentUpdate+PureComponent</h3>
+        <div className={css.section}>
+         <Tabs items={tabs}/>
+        </div>
+
+
+        <h2>Clock без утечки памяти</h2>
+        <div className={css.section}>
+           <Clock />
+        </div>
+
+
+        <h2>To Do с модалкой</h2>
         <div className={css.section}>
            <ToDo />
         </div>
+
+
 
         <h2>Form</h2>
         <Form onSubmit={this.formSubmitHadler}/>
@@ -61,7 +80,7 @@ class Components extends Component {
           <h2>Counter</h2>
           <Counter initialValue={10} />
         </>
-      </>
+      </div>
     );
   }
 }

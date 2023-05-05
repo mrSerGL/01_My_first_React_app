@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
-// import ColorPicker from './components/ColorPicker';
-// import Counter from './components/Counter';
 import Container from './components/Container';
 import TodoList from './components/TodoList';
 import TodoEditor from './components/TodoEditor';
 import Filter from './components/Filter';
-// import Form from './components/Form';
-import initialTodos from './todos.json';
+import Modal from './components/Modal';
+import IconButton from './components/IconButton'
+import {ReactComponent as AddIcon} from '../../icons/add.svg'
+
+
+//- ============== class ================
 
 class ToDo extends Component {
   state = {
-    todos: initialTodos,
+    // todos: initialTodos,
+    todos: [],
     filter: '',
+    showModal: false,
+  };
+
+  //- перключатель состояния открытия-закрытия мождалки
+  toggleModal = () => {
+    // this.setState(state=>({
+    // showModal: !state.showModal
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
   };
 
   addTodo = text => {
@@ -22,9 +35,16 @@ class ToDo extends Component {
       completed: false,
     };
 
+    if (text.length === 0){
+      alert('Enter text');
+      return;
+    }
+
     this.setState(({ todos }) => ({
       todos: [todo, ...todos],
     }));
+
+    this.toggleModal();
   };
 
   deleteTodo = todoId => {
@@ -67,35 +87,85 @@ class ToDo extends Component {
     );
   };
 
-  calculateCompletedTodos  () {
+  calculateCompletedTodos() {
     const { todos } = this.state;
 
     return todos.reduce(
       (total, todo) => (todo.completed ? total + 1 : total),
       0,
     );
-  };
-
-  componentDidMount(){
-    console.log('App componentDidMount')
   }
 
-  componentDidUpdate(prevProps, prevState){
-    console.log('App componentDidUpdate:', 'prevProps:',prevState)
-    console.log('App componentDidUpdate:', 'prevState:',this.state)
+  // ===========  componentDidMount  ===========
+
+  componentDidMount() {
+    // console.log('App componentDidMount');
+
+    const todos = localStorage.getItem('todos');
+    const parsedTodos = JSON.parse(todos);
+
+    //- === имитация запроса ====
+
+    //   setTimeout(() => {
+    //    this.setState({ todos: parsedTodos });
+    //   }, 2000);
+
+    //- проверка на наличие записей в тудус, если NULL - может все поламается
+
+    if (parsedTodos) {
+      this.setState({ todos: parsedTodos });
+    }
   }
+
+  // ========  componentDidUpdate  ============
+
+  //* не делать стрелочной функцией (публичное свойство), обычнй метод
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.todos !== prevState.todos) {
+      //# console.log('todos is update');
+
+      localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+    // console.log('App componentDidUpdate:', 'prevProps:',prevState)
+    // console.log('App componentDidUpdate:', 'prevState:',this.state)
+  }
+
+  //- ============== RENDER AREA ==================
 
   render() {
-console.log('App render')
+    //# console.log('App render');
 
-    const { todos, filter } = this.state;
+    const { todos, filter, showModal } = this.state;
     const totalTodoCount = todos.length;
     const completedTodoCount = this.calculateCompletedTodos();
     const visibleTodos = this.getVisibleTodos();
 
     return (
       <Container>
-        {/* TODO: вынести в отдельный компонент */}
+
+        
+
+        <IconButton  type="button" onClick={this.toggleModal} aria-label="Add ToDo"><AddIcon width={40} fill='blue'/></IconButton>
+
+
+        <button type="button" onClick={this.toggleModal}>
+          Open modal window
+        </button>
+
+        {showModal && (
+          <Modal onClose={this.toggleModal}>
+
+            {/* <h1> This is the content of Modal</h1>
+            <p>Loroiuuuuuhoiuhgiouhoiuh[oihoihj'piojupoijpoi</p>
+            <button type="button" onClick={this.toggleModal}>
+              Close modal window
+            </button> */}
+
+            <TodoEditor onSubmit={this.addTodo}/>
+
+          </Modal>
+        )}
 
         <div>
           <p>Всего заметок: {totalTodoCount}</p>

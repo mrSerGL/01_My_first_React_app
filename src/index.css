@@ -49,12 +49,12 @@ img {
 }
 
 .container {
-  max-width: 1200px;
-  min-width: 1200px;
+  max-width: 300px;
+  min-width: 300px;
   margin-left: auto;
   margin-right: auto;
   /* border: 1px solid black; */
-  border-radius: 10px;
+  /* border-radius: 10px; */
 
 
   /* display: grid;
@@ -63,4 +63,5 @@ img {
   "m m s"
   "f f f"; */
 }
+
 
