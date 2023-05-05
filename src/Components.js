@@ -14,6 +14,7 @@ import ToDo from './components/TodoList';
 import Clock from './components/lifeCycle/Clock';
 import Tabs from 'components/lifeCycle/Tabs';
 import tabs from './components/lifeCycle/Tabs/tabs.json';
+import HttpQueries from 'components/httpQueries/HttpQueries';
 
 
 
@@ -40,6 +41,12 @@ class Components extends Component {
     return (
       <div className='container'>
         <RouteApp />
+
+
+        <h2>HTTP queries</h2>
+        <div className={css.section}>
+           <HttpQueries/>
+        </div>
 
         <h3>Tabs - работа с активным элементом в коллекции + shouldComponentUpdate+PureComponent</h3>
         <div className={css.section}>
