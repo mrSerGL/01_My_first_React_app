@@ -4,12 +4,12 @@ import { Component } from 'react';
 // import PokemonPendingView from './PokemonPendingView';
 // import pokemonAPI from '../services/pokemon-api';
 
-const Status = {
-  // IDLE: 'idle',
-  // PENDING: 'pending',
-  // RESOLVED: 'resolved',
-  // REJECTED: 'rejected',
-};
+// const Status = {
+//   // IDLE: 'idle',
+//   // PENDING: 'pending',
+//   // RESOLVED: 'resolved',
+//   // REJECTED: 'rejected',
+// };
 
 export default class PokemonInfo extends Component {
   state = {

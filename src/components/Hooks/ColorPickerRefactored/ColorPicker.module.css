@@ -1,0 +1,25 @@
+.colorPicker {
+    width:270px;
+    padding: 10px;
+    border: 1px solid black;
+  }
+  
+  .title {
+    line-height: 1.3;
+  }
+  
+  .option {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 4px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: transform 250ms linear;
+  }
+  
+  .activeOption {
+    composes: option;
+    transform: scale(1.2);
+  }

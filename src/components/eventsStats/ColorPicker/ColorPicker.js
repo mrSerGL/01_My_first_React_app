@@ -20,8 +20,6 @@ class ColorPicker extends Component {
   };
 
   render() {
-
-  
     const activeOptionLabel = colorPickerOptions[this.state.activeOptionInd];
     // console.log(activeOptionLabel);
 
