@@ -1,1 +1,1 @@
-export {default} from './CounterHoocked'
+export {default} from './CounterHooked'

@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 import css from './Components.module.css';
 
-import RouteApp from './components/Routing/RouteApp';
+// import RouteApp from './components/Routing/RouteApp';
 import Counter from './components/eventsStats/Counter/';
 import Dropdown from './components/eventsStats/Dropdown/';
 import ColorPicker from './components/eventsStats/ColorPicker/';
@@ -16,8 +16,11 @@ import Tabs from 'components/lifeCycle/Tabs';
 import tabs from './components/lifeCycle/Tabs/tabs.json';
 import HttpQueries from 'components/httpQueries/HttpQueries';
 import ColorPickerHoocked from './components/Hooks/ColorPickerRefactored';
-import CounterHoocked from './components/Hooks/Counter';
+import CounterHooked from 'components/Hooks/Counter/CounterHooked';
 import SignupForm from './components/Hooks/SignupForm';
+import ClockHooked from './components/Hooks/Clock';
+import HttpQueriesHooked from "./components/Hooks/httpQueriesHooked/HttpQueries"
+
 
 // - ================== class area ==============================
 
@@ -30,7 +33,19 @@ class Components extends Component {
 
     return (
       <div className="container">
-        <RouteApp />
+        {/* <RouteApp /> */}
+
+        <h2>Hooked pokemons HTTP queries</h2>
+        <div className={css.section}>
+          <HttpQueriesHooked />
+        </div>
+
+
+
+        <h2>useRef Clock Первый рендер Последний рендер</h2>
+        <div className={css.section}>
+          <ClockHooked />
+        </div>
 
         <h2>SignUpForm - localStorage,
 lazy state initialization,
@@ -41,7 +56,7 @@ lazy state initialization,
 
         <h2>Counter refactored on Hoock + useEffect</h2>
         <div className={css.section}>
-          <CounterHoocked />
+          <CounterHooked/>
         </div>
 
         <h2>ColorPicker refactored on Hoock</h2>

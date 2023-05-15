@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import styles from './Counter.module.css';
 
-export default function CounterHoocked() {
+export default function CounterHooked() {
   const [counterA, setCounterA] = useState(0);
   const [counterB, setCounterB] = useState(0);
+  const [total, setTotal] = useState(0);
 
   const handleCounterAIncrement = () => {
     setCounterA(prevState => prevState + 1);
@@ -26,11 +27,12 @@ export default function CounterHoocked() {
   //# запускается при изменении значения в массиве зависимостей)
   useEffect(() => {
     const totalClick = counterA + counterB;
-    console.log(`total clicks: ${totalClick }`)
+    // console.log(`total clicks: ${totalClick }`)
+    setTotal(totalClick)
   }, [counterA, counterB]);
 
   return (
-    <> 
+    <> <p>Total clicks: {total}</p>
 
       <button
         className={styles.btn}
