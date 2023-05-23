@@ -118,7 +118,7 @@ import './index.css'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      <BrowserRouter>
+      <BrowserRouter basename="/01_My_first_React_app">
     <App />
     </BrowserRouter>
   </React.StrictMode>
