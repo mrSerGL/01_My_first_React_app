@@ -2,7 +2,7 @@
   "name": "01_first_app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mrSerGL.github.io/01_My_first_React_app",
+    "homepage": "https://mrSerGL.github.io/01_My_first_React_app",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
