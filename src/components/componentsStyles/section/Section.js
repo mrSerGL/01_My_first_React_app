@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 function Section({ title, children }) {
   return (
     <div>
-      {title && <h2>{title}</h2>}
+      {title && <h3>{title}</h3>}
       {children}
     </div>
   );

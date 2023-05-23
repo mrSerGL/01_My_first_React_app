@@ -17,7 +17,10 @@ export default class HttpQueries extends Component {
 
   render() {
     return (
+    
       <div style={{ width: 280, margin: '0 auto', padding: '8' }}>
+         <h2>Hooked pokemons HTTP queries</h2>
+       
         <PokemonForm submitPokemonName={this.handleFormSubmit} />
         <PokemonInfo pokemonName={this.state.pokemonName}/>
         {/* <ToastContainer autoClose={3000}/> */}
